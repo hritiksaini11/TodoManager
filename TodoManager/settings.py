@@ -69,10 +69,10 @@ WSGI_APPLICATION = 'TodoManager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'TodoDB',          # your database name
+        'NAME': 'railway',          # your database name
         'USER': 'root',        # MySQL username
-        'PASSWORD': 'Hritik@123', # MySQL password
-        'HOST': 'localhost',      # or '127.0.0.1'
+        'PASSWORD': 'CXIdgolMjZFVmwpCbeQbLCoGSUJPSHnn', # MySQL password
+        'HOST': 'mysql.railway.internal',      # or '127.0.0.1'
         'PORT': '3306',           # default MySQL port
     }
 }
