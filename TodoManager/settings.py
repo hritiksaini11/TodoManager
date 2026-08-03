@@ -69,11 +69,11 @@ WSGI_APPLICATION = 'TodoManager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  os.environ.get('railway'),          # your database name
-        'USER':  os.environ.get('root'),        # MySQL username
-        'PASSWORD':  os.environ.get('CXIdgolMjZFVmwpCbeQbLCoGSUJPSHnn'), # MySQL password
-        'HOST':  os.environ.get('mysql.railway.internal'),      # or '127.0.0.1'
-        'PORT':  os.environ.get('3306'),           # default MySQL port
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 
