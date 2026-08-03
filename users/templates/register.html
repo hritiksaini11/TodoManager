@@ -1,0 +1,309 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <!-- Google Fonts for a clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --bg-primary: #f4f6f9;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent-color: #4f46e5; 
+            --accent-hover: #4338ca;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        /* ==========================================================================
+           Full-Screen Layout Rules (Fixed min-height for responsiveness)
+           ========================================================================== */
+
+        .auth-body {
+            background-color: var(--card-bg);
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            overflow-x: hidden;
+        }
+
+        .auth-container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            max-width: 100%;
+            background: var(--card-bg);
+            border-radius: 0;
+            box-shadow: none;
+            margin: 0;
+        }
+
+        /* Auth Left Banner */
+        .auth-sidebar {
+            width: 40%;
+            background-color: #312e81;
+            padding: 4rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .auth-logo h2 {
+            color: #ffffff;
+            font-size: 1.5rem;
+        }
+
+        .auth-marketing h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-marketing p {
+            color: #c7d2fe;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .auth-footer-text {
+            font-size: 0.8rem;
+            color: #818cf8;
+        }
+
+        /* Auth Form Content Area */
+        .auth-content {
+            width: 60%;
+            min-height: 100vh;
+            padding: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-box {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .form-box h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--text-main);
+        }
+
+        .form-box .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .input-help {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Checkbox Alignment */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .checkbox-group input {
+            margin-top: 0.15rem;
+            accent-color: var(--accent-color);
+        }
+
+        .checkbox-group a, .auth-redirect a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .checkbox-group a:hover, .auth-redirect a:hover {
+            text-decoration: underline;
+        }
+
+        /* Full Width Button */
+        .btn-primary-block {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+
+        .btn-primary-block:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .auth-redirect {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+
+        /* Auth Responsive Breakpoint for Mobile/Tablets */
+        @media (max-width: 768px) {
+            .auth-container {
+                height: auto;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+            .auth-sidebar {
+                width: 100%;
+                min-height: auto;
+                padding: 3rem 2rem;
+                gap: 3rem;
+            }
+            .auth-marketing h1 {
+                font-size: 2rem;
+            }
+            .auth-content {
+                width: 100%;
+                min-height: auto;
+                padding: 3rem 2rem;
+            }
+        }
+
+        /* Extra-small phones */
+        @media (max-width: 420px) {
+            .auth-sidebar {
+                padding: 2rem 1.25rem;
+            }
+            .auth-content {
+                padding: 2rem 1.25rem;
+            }
+            .auth-marketing h1 {
+                font-size: 1.6rem;
+            }
+            .form-box h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>    
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-container">
+        <!-- Left Side: Branding/Marketing -->
+        <div class="auth-sidebar">
+            <div class="auth-logo">
+                <h2>📝 TodoManager</h2>
+            </div>
+            <div class="auth-marketing">
+                <h1>Quick and Easy to Access Tasks......</h1>
+                <p>Join thousands of users who take Small Steps Every Day Leading to Big Achievements and sync their tasks seamlessly in real-time.</p>
+            </div>
+            <div class="auth-footer-text">
+                &copy; 2026 Todo Manager Inc. All rights reserved.
+            </div>
+        </div>
+
+        <!-- Right Side: Registration Form -->
+        <div class="auth-content">
+            <div class="form-box">
+                <h2>Create your account</h2>
+                <p class="subtitle">Small Steps Every Day Lead to Big Achievements.</p>
+
+                <form method="POST" class="register-form">
+                    {% csrf_token %}
+             
+                    <!-- Full Name -->
+                    <div class="input-group">
+                        <label for="fullname">Username</label>
+                        <input type="text" id="fullname" name="username" placeholder="Username" required>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="abc@example.com" required>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <span class="input-help">Must be at least 8 characters.</span>
+                    </div>
+
+                    <!-- Terms Checkbox -->
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-primary-block">Get Started</button>
+                </form>
+
+                <!-- Redirect to Login -->
+                <p class="auth-redirect">
+                    Already have an account? <a href="{% url 'login' %}">Sign in</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

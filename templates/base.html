@@ -1,0 +1,96 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>
+       {% block title %}{% endblock title %}
+   </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+      /* ---- Global responsive baseline ---- */
+      html { -webkit-text-size-adjust: 100%; }
+      body { overflow-x: hidden; }
+      img, video { max-width: 100%; height: auto; }
+
+      /* Keep the navbar's own controls (username/login/logout) from
+         overlapping the toggler on very small screens */
+      @media (max-width: 991.98px) {
+        .navbar > .container-fluid {
+          flex-wrap: wrap;
+          row-gap: .5rem;
+        }
+        .navbar .d-flex,
+        .navbar .d-grid {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        .navbar .d-flex {
+          justify-content: space-between;
+        }
+      }
+    </style>
+
+   </head>
+  <body>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary"  >
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url "homepage" %}"><img src={% static 'image/icon.jpg' %} alt="image not found!" width="30" height="30"> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url "homepage" %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "todolist" %}">Todolist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "contact" %}">Contact us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "about" %}">About</a>
+        </li>
+      </ul>
+     
+    </div>
+    {% if user.is_authenticated %}
+      <div class="d-flex align-items-center">
+        <div class = "p-2 fw-bolder text-truncate" style="max-width: 55vw;">
+          {{user.username}}
+        </div> 
+
+       <a href="{% url 'logout' %}">
+    <button class="btn btn-outline-danger" type="submit">LogOut</button>
+</a>
+
+      </div>
+    {% else %}
+    
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <a href="{% url 'register' %}"><button type="button" class="btn btn-outline-warning w-100">New User</button></a>
+      <a href="{% url 'login' %}"><button class="btn btn-outline-primary w-100" type="button">Login</button> </a>
+    </div>
+
+    {% endif %}
+  </div>
+</nav>
+    <div class="content px-3 px-sm-4">
+      {% block content %}  {% endblock content %}
+
+    </div>
+  
+
+   
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+</html>
