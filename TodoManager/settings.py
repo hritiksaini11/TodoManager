@@ -13,9 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-bw$in%+jx3bisu0!$5#jr+pogk9w)7!b^q6iqtp+6o+u6fn8$9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [  ".onrender.com",]
+ALLOWED_HOSTS = [ ]
 
 
 # Application definition
@@ -69,11 +69,11 @@ WSGI_APPLICATION = 'TodoManager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+        'NAME': 'TodoDB',          # your database name
+        'USER': 'root',        # MySQL username
+        'PASSWORD': 'Hritik@123', # MySQL password
+        'HOST': 'localhost',      # or '127.0.0.1'
+        'PORT': '3306',           # default MySQL port
     }
 }
 
