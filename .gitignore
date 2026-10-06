@@ -1,3 +1,4 @@
 TodoEnv/
 __pycache__/
 .env
+staticfiles/
