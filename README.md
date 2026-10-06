@@ -1,11 +1,12 @@
 # Todo Manager
 
-A full-stack Todo/Task management web application built with Django, featuring user authentication and a dark, code-editor-inspired UI.
+A Django Todo/Task management application with user authentication, per-user tasks, task completion, editing, deletion, pagination, a dark, code-editor-inspired UI, and task creation date/time ..
 
 ## Features
 
 - 🔐 **User Authentication** — Register, login, and logout functionality
 - ✅ **Task Management** — Create, edit, complete, mark pending, and delete tasks
+- ⏱️ Task creation date and time in India time (`Asia/Kolkata`)
 - 👤 **Per-user Tasks** — Each user only sees and manages their own tasks
 - 📞 **Contact & About Pages** — Static informational pages
 - 🎨 **Custom UI Theme** — Dark, code-editor/terminal aesthetic built with Bootstrap 5, JetBrains Mono, and Inter fonts
