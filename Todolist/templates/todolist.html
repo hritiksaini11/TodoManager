@@ -27,6 +27,7 @@
   <thead class="table-dark" >
     <tr>
       <th scope="col">Task Name</th>
+      <th scope="col" class="text-center">Added On</th>
       <th scope="col" class="text-center">Status</th>
       <th scope="col" class="text-center">Edit</th>
       <th scope="col" class="text-center">Delete</th>
@@ -38,6 +39,7 @@
 
       <tr class ="table-success">
         <td class="text-break">{{ task.task }}</td>
+        <td class="text-center text-nowrap">{{ task.created_at|date:"d M Y, h:i A" }}</td>
         <td class="text-center"><a href="{% url 'pending_task' task.id %}"><button type="button" class="btn btn-outline-success">✅</button></a></td>
         <td class="text-center"><a href="{% url 'edit_task' task.id %}"><button type="button" class="btn btn-warning">Edit</button></a></td>
         <td class="text-center"><a href="{% url 'delete_task' task.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
@@ -45,6 +47,7 @@
       {% else %}
        <tr>
         <td class="text-break">{{ task.task }}</td>
+        <td class="text-center text-nowrap">{{ task.created_at|date:"d M Y, h:i A" }}</td>
         <td class="text-center"><a href="{% url 'complete_task' task.id %}"><button type="button" class="btn btn-outline-danger">❌</button></a></td>
         <td class="text-center"><a href="{% url 'edit_task' task.id %}"><button type="button" class="btn btn-warning">Edit</button></a></td>
         <td class="text-center"><a href="{% url 'delete_task' task.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>

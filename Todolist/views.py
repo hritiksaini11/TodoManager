@@ -22,7 +22,7 @@ def todolist(request):
         
         messages.success(request,"Something went Wrong !")
     
-    tasks = Task.objects.filter(owner = request.user)
+    tasks = Task.objects.filter(owner = request.user).order_by('-created_at')
     paginator = Paginator(tasks , 8)
     page = request.GET.get("page")
     tasks = paginator.get_page(page)
